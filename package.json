@@ -1,0 +1,26 @@
+{
+  "name": "modernweb-2018-advanced-react-patterns",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@trendmicro/react-modal": "^2.1.2",
+    "@trendmicro/react-navs": "^0.11.1",
+    "@trendmicro/react-table": "^0.9.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-powerplug": "^1.0.0-rc.1",
+    "react-scripts": "1.1.4",
+    "recompose": "^0.27.1",
+    "styled-components": "^3.3.3",
+    "trendmicro-ui": "^0.5.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint-config-react-app": "^2.1.0"
+  }
+}
