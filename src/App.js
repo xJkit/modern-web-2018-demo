@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
+import JayChungAvatar from './avatar_jay.png';
 import styled from 'styled-components';
 
 import { Nav, NavItem, TabContent, TabPane } from 'components/Navs';
 import { Value } from 'react-powerplug';
+import Avatar from './components/Avatar';
 
 /** containers */
 import ContainerComponentPattern from './ContainerComponentPattern';
@@ -19,7 +21,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Modern Web 2018</h1>
         </header>
-        <h2>Jay Chung</h2>
+        <div className="Jay-Chung">
+          <Avatar className="avatar" src={JayChungAvatar} />
+          <h2>Jay Chung</h2>
+        </div>
         <Value initial="container-component">
           {({ value, set }) => (
             <Fragment>
@@ -80,6 +85,17 @@ const Container = styled.div`
   .App-title {
     font-size: 1.5em;
     color: white;
+  }
+
+  .Jay-Chung {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 32px;
+
+    .avatar {
+      margin-right: 8px;
+    }
   }
 
   @keyframes App-logo-spin {
