@@ -6,8 +6,8 @@ import { Nav, NavItem, TabContent, TabPane } from 'components/Navs';
 import { Value } from 'react-powerplug';
 
 /** containers */
-import ContainerComponent from './ContainerComponent';
-import CompoundComponent from './CompoundComponent';
+import ContainerComponentPattern from './ContainerComponentPattern';
+import CompoundComponentPattern from './CompoundComponentPattern';
 import HoC from './HOC';
 import RenderProps from './RenderProps';
 
@@ -39,10 +39,10 @@ class App extends Component {
               </Nav>
               <TabContent activeKey={value}>
                 <TabPane eventKey="container-component">
-                  <ContainerComponent />
+                  <ContainerComponentPattern />
                 </TabPane>
                 <TabPane eventKey="compound-component">
-                  <CompoundComponent />
+                  <CompoundComponentPattern />
                 </TabPane>
                 <TabPane eventKey="hoc">
                   <HoC />

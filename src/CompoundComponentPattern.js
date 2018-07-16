@@ -5,7 +5,7 @@ import InlineEditing from './components/InlineEditing/ContainerComponent';
 import Table from './components/Table';
 import personalData from './personal_data.json';
 
-class NoPattern extends React.Component {
+class CompoundComponentPattern extends React.Component {
   state = {
     data: personalData
   };
@@ -50,10 +50,13 @@ class NoPattern extends React.Component {
           ]}
           style={{ width: 400, margin: '0 auto' }}
         />
-        <IssueText>{`How to customize <button />? <input />?`}</IssueText>
+        <IssueText
+          title={`How to customize <button />? <input />?`}
+          desc="It takes redundant props to be passed to presentationl components inside container component"
+        />
       </div>
     );
   }
 }
 
-export default NoPattern;
+export default CompoundComponentPattern;
