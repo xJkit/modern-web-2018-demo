@@ -9,7 +9,7 @@ import { Value } from 'react-powerplug';
 import ContainerComponentPattern from './ContainerComponentPattern';
 import CompoundComponentPattern from './CompoundComponentPattern';
 import HoC from './HOC';
-import RenderProps from './RenderProps';
+import RenderPropsPattern from './RenderPropsPattern';
 
 class App extends Component {
   render() {
@@ -34,8 +34,8 @@ class App extends Component {
                 <NavItem eventKey="compound-component">
                   Compound Component
                 </NavItem>
-                <NavItem eventKey="hoc">Higher Order Component</NavItem>
                 <NavItem eventKey="render-props">Render Props</NavItem>
+                <NavItem eventKey="hoc">Higher Order Component</NavItem>
               </Nav>
               <TabContent activeKey={value}>
                 <TabPane eventKey="container-component">
@@ -48,7 +48,7 @@ class App extends Component {
                   <HoC />
                 </TabPane>
                 <TabPane eventKey="render-props">
-                  <RenderProps />
+                  <RenderPropsPattern />
                 </TabPane>
               </TabContent>
             </Fragment>

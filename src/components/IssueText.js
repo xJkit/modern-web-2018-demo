@@ -29,12 +29,8 @@ const Desc = styled.h6`
 
 const IssueText = ({ title = '', desc = '' }) => (
   <DisplayTable>
-    <DisplayTableRow>
-      <Issue>{title}</Issue>
-    </DisplayTableRow>
-    <DisplayTableRow>
-      <Desc>{desc}</Desc>
-    </DisplayTableRow>
+    <DisplayTableRow>{title && <Issue>{title}</Issue>}</DisplayTableRow>
+    <DisplayTableRow>{desc && <Desc>{desc}</Desc>}</DisplayTableRow>
   </DisplayTable>
 );
 
