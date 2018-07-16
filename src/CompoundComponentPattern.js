@@ -1,7 +1,7 @@
 import React from 'react';
 
 import IssueText from './components/IssueText';
-import InlineEditing from './components/InlineEditing/ContainerComponent';
+import InlineEditing from './components/InlineEditing/CompoundComponent';
 import Table from './components/Table';
 import personalData from './personal_data.json';
 
@@ -43,7 +43,13 @@ class CompoundComponentPattern extends React.Component {
                   <InlineEditing
                     value={value}
                     onSave={this.handleChangeAddressAtIndex(rowIndex)}
-                  />
+                  >
+                    <InlineEditing.Editor>
+                      <InlineEditing.Input />
+                      <InlineEditing.Button />
+                    </InlineEditing.Editor>
+                    <InlineEditing.Display />
+                  </InlineEditing>
                 );
               }
             }
@@ -51,8 +57,8 @@ class CompoundComponentPattern extends React.Component {
           style={{ width: 400, margin: '0 auto' }}
         />
         <IssueText
-          title={`How to customize <button />? <input />?`}
-          desc="It takes redundant props to be passed to presentationl components inside container component"
+          title="How to use my own Input and Button components?"
+          desc="implicit states are cleaner but not very good for custom components "
         />
       </div>
     );

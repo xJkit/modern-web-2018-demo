@@ -48,6 +48,7 @@ class ContainerComponentPattern extends React.Component {
                     inputStyle={{}}
                     editorStyle={{}}
                     displayStyle={{}}
+                    buttonOrder={[]}
                   />
                 );
               }
@@ -56,7 +57,7 @@ class ContainerComponentPattern extends React.Component {
           style={{ width: 400, margin: '0 auto' }}
         />
         <IssueText
-          title={`How to customize <button />? <input />?`}
+          title={`How to customize button and input styles? How to change the button order?`}
           desc="It takes redundant props to be passed to presentationl components inside container component"
         />
       </div>
