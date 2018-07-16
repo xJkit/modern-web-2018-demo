@@ -23,11 +23,11 @@ const Container = styled.div`
     background-color: #222;
     height: 150px;
     padding: 20px;
-    color: white;
   }
 
   .App-title {
     font-size: 1.5em;
+    color: white;
   }
 
   @keyframes App-logo-spin {
@@ -46,8 +46,9 @@ class App extends Component {
       <Container>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to Modern Web 2018</h1>
         </header>
-        <h2 className="App-title">Welcome to Modern Web 2018</h2>
+        <h2>Jay Chung</h2>
         <Value initial="no-pattern">
           {({ value, set }) => (
             <Fragment>
