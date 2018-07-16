@@ -6,10 +6,62 @@ import { Nav, NavItem, TabContent, TabPane } from 'components/Navs';
 import { Value } from 'react-powerplug';
 
 /** containers */
-import NoPattern from './NoPattern';
+import ContainerComponent from './ContainerComponent';
 import CompoundComponent from './CompoundComponent';
-import HOC from './HOC';
+import HoC from './HOC';
 import RenderProps from './RenderProps';
+
+class App extends Component {
+  render() {
+    return (
+      <Container>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to Modern Web 2018</h1>
+        </header>
+        <h2>Jay Chung</h2>
+        <Value initial="container-component">
+          {({ value, set }) => (
+            <Fragment>
+              <Nav
+                activeKey={value}
+                style={{ padding: '0 16px' }}
+                onSelect={set}
+              >
+                <NavItem eventKey="container-component">
+                  Container Component
+                </NavItem>
+                <NavItem eventKey="compound-component">
+                  Compound Component
+                </NavItem>
+                <NavItem eventKey="hoc">Higher Order Component</NavItem>
+                <NavItem eventKey="render-props">Render Props</NavItem>
+              </Nav>
+              <TabContent activeKey={value}>
+                <TabPane eventKey="container-component">
+                  <ContainerComponent />
+                </TabPane>
+                <TabPane eventKey="compound-component">
+                  <CompoundComponent />
+                </TabPane>
+                <TabPane eventKey="hoc">
+                  <HoC />
+                </TabPane>
+                <TabPane eventKey="render-props">
+                  <RenderProps />
+                </TabPane>
+              </TabContent>
+            </Fragment>
+          )}
+        </Value>
+      </Container>
+    );
+  }
+}
+
+export default App;
+
+/** insignificent implementation detail */
 
 const Container = styled.div`
   text-align: center;
@@ -39,51 +91,3 @@ const Container = styled.div`
     }
   }
 `;
-
-class App extends Component {
-  render() {
-    return (
-      <Container>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Modern Web 2018</h1>
-        </header>
-        <h2>Jay Chung</h2>
-        <Value initial="no-pattern">
-          {({ value, set }) => (
-            <Fragment>
-              <Nav
-                activeKey={value}
-                style={{ padding: '0 16px' }}
-                onSelect={set}
-              >
-                <NavItem eventKey="no-pattern">No Pattern</NavItem>
-                <NavItem eventKey="compound-component">
-                  Compound Component
-                </NavItem>
-                <NavItem eventKey="hoc">Higher Order Component</NavItem>
-                <NavItem eventKey="render-props">Render Props</NavItem>
-              </Nav>
-              <TabContent activeKey={value}>
-                <TabPane eventKey="no-pattern">
-                  <NoPattern />
-                </TabPane>
-                <TabPane eventKey="compound-component">
-                  <CompoundComponent />
-                </TabPane>
-                <TabPane eventKey="hoc">
-                  <HOC />
-                </TabPane>
-                <TabPane eventKey="render-props">
-                  <RenderProps />
-                </TabPane>
-              </TabContent>
-            </Fragment>
-          )}
-        </Value>
-      </Container>
-    );
-  }
-}
-
-export default App;
