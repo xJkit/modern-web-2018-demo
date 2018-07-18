@@ -4,6 +4,7 @@ import JayChungAvatar from './avatar_jay.png';
 import styled from 'styled-components';
 
 import { Nav, NavItem, TabContent, TabPane } from 'components/Navs';
+import { Checkbox } from 'components/Checkbox';
 import { Value } from 'react-powerplug';
 import Avatar from './components/Avatar';
 
@@ -31,8 +32,11 @@ class App extends Component {
     }));
   };
 
+  toggleAuth = () => this.setState(state => ({ isAuth: !state.isAuth }));
+
   state = {
     data: personalData,
+    isAuth: false,
     handleChangeAddressAtIndex: this.handleChangeAddressAtIndex
   };
 
@@ -73,7 +77,7 @@ class App extends Component {
                     <CompoundComponentPattern />
                   </TabPane>
                   <TabPane lazy eventKey="hoc">
-                    <HoC />
+                    <HoC isAuth={this.state.isAuth} />
                   </TabPane>
                   <TabPane lazy eventKey="render-props">
                     <RenderPropsPattern />
@@ -82,6 +86,11 @@ class App extends Component {
               </Fragment>
             )}
           </Value>
+          <CheckAuthBox
+            checked={this.state.isAuth}
+            onChange={this.toggleAuth}
+            label={this.state.isAuth ? 'You are logged in' : 'Check to log in'}
+          />
         </Container>
       </AppContext.Provider>
     );
@@ -94,6 +103,7 @@ export default App;
 
 const Container = styled.div`
   text-align: center;
+  position: relative;
 
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -130,4 +140,11 @@ const Container = styled.div`
       transform: rotate(360deg);
     }
   }
+`;
+
+const CheckAuthBox = styled(Checkbox)`
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  color: white;
 `;

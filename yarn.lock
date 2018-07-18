@@ -22,6 +22,15 @@
     classnames "^2.2.5"
     prop-types "^15.5.8"
 
+"@trendmicro/react-checkbox@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@trendmicro/react-checkbox/-/react-checkbox-3.4.0.tgz#1094606941b4105ebd8f116bfbdf647221177504"
+  dependencies:
+    chained-function "^0.5.0"
+    classnames "^2.2.5"
+    ensure-array "^1.0.0"
+    prop-types "^15.6.0"
+
 "@trendmicro/react-dropdown@^1.1.0", "@trendmicro/react-dropdown@^1.2.3":
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@trendmicro/react-dropdown/-/react-dropdown-1.2.3.tgz#b0d20d2691e76a9186efdf3b05dabd6e6cbd98c4"
