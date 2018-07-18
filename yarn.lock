@@ -42,9 +42,9 @@
     classnames "^2.2.5"
     prop-types "^15.6.0"
 
-"@trendmicro/react-navs@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@trendmicro/react-navs/-/react-navs-0.11.1.tgz#7436fa038514f2abdad0ee8dc656ec3c0a003621"
+"@trendmicro/react-navs@^0.11.2":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@trendmicro/react-navs/-/react-navs-0.11.2.tgz#a36f39c8a6c7605a629e82340a6176a468bcdea0"
   dependencies:
     "@trendmicro/react-anchor" "^0.5.6"
     "@trendmicro/react-dropdown" "^1.1.0"

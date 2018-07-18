@@ -3,30 +3,16 @@ import React from 'react';
 import IssueText from './components/IssueText';
 import InlineEditing from './components/InlineEditing/RenderProps';
 import Table from './components/Table';
-import personalData from './personal_data.json';
+
+import { AppContext } from './App';
 
 class RenderPropsPattern extends React.Component {
-  state = {
-    data: personalData
-  };
-
-  handleChangeAddressAtIndex = newIdx => newAddress => {
-    this.setState(state => ({
-      data: state.data.map((oldRow, oldIdx) => {
-        if (oldIdx === newIdx) {
-          return { ...oldRow, address: newAddress };
-        }
-        return oldRow;
-      })
-    }));
-  };
-
-  render() {
+  renderContent = ({ data, handleChangeAddressAtIndex }) => {
     return (
       <div>
-        <h3>Welcome to find me from the social media!</h3>
+        <h3>Welcome to find me via the social media!</h3>
         <Table
-          data={this.state.data}
+          data={data}
           columns={[
             {
               title: 'Social Media',
@@ -42,7 +28,7 @@ class RenderPropsPattern extends React.Component {
                 return (
                   <InlineEditing
                     value={rowValue}
-                    onSave={this.handleChangeAddressAtIndex(rowIndex)}
+                    onSave={handleChangeAddressAtIndex(rowIndex)}
                     render={({
                       value,
                       handleChangeInput,
@@ -77,6 +63,9 @@ class RenderPropsPattern extends React.Component {
         <IssueText desc="render props can use children prop to look like normal jsx structure" />
       </div>
     );
+  };
+  render() {
+    return <AppContext.Consumer>{this.renderContent}</AppContext.Consumer>;
   }
 }
 

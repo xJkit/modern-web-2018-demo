@@ -7,59 +7,83 @@ import { Nav, NavItem, TabContent, TabPane } from 'components/Navs';
 import { Value } from 'react-powerplug';
 import Avatar from './components/Avatar';
 
+import personalData from './personal_data.json';
+
 /** containers */
 import ContainerComponentPattern from './ContainerComponentPattern';
 import CompoundComponentPattern from './CompoundComponentPattern';
 import HoC from './HOC';
 import RenderPropsPattern from './RenderPropsPattern';
 
+export const AppContext = React.createContext({
+  data: []
+});
+
 class App extends Component {
+  handleChangeAddressAtIndex = newIdx => newAddress => {
+    this.setState(state => ({
+      data: state.data.map((oldRow, oldIdx) => {
+        if (oldIdx === newIdx) {
+          return { ...oldRow, address: newAddress };
+        }
+        return oldRow;
+      })
+    }));
+  };
+
+  state = {
+    data: personalData,
+    handleChangeAddressAtIndex: this.handleChangeAddressAtIndex
+  };
+
   render() {
     return (
-      <Container>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Modern Web 2018</h1>
-        </header>
-        <div className="Jay-Chung">
-          <Avatar className="avatar" src={JayChungAvatar} />
-          <h2>Jay Chung</h2>
-        </div>
-        <Value initial="container-component">
-          {({ value, set }) => (
-            <Fragment>
-              <Nav
-                activeKey={value}
-                style={{ padding: '0 16px' }}
-                onSelect={set}
-              >
-                <NavItem eventKey="container-component">
-                  Container Component
-                </NavItem>
-                <NavItem eventKey="compound-component">
-                  Compound Component
-                </NavItem>
-                <NavItem eventKey="render-props">Render Props</NavItem>
-                <NavItem eventKey="hoc">Higher Order Component</NavItem>
-              </Nav>
-              <TabContent activeKey={value}>
-                <TabPane eventKey="container-component">
-                  <ContainerComponentPattern />
-                </TabPane>
-                <TabPane eventKey="compound-component">
-                  <CompoundComponentPattern />
-                </TabPane>
-                <TabPane eventKey="hoc">
-                  <HoC />
-                </TabPane>
-                <TabPane eventKey="render-props">
-                  <RenderPropsPattern />
-                </TabPane>
-              </TabContent>
-            </Fragment>
-          )}
-        </Value>
-      </Container>
+      <AppContext.Provider value={this.state}>
+        <Container>
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to Modern Web 2018</h1>
+          </header>
+          <div className="Jay-Chung">
+            <Avatar className="avatar" src={JayChungAvatar} />
+            <h2>Jay Chung</h2>
+          </div>
+          <Value initial="container-component">
+            {({ value, set }) => (
+              <Fragment>
+                <Nav
+                  activeKey={value}
+                  style={{ padding: '0 16px' }}
+                  onSelect={set}
+                >
+                  <NavItem eventKey="container-component">
+                    Container Component
+                  </NavItem>
+                  <NavItem eventKey="compound-component">
+                    Compound Component
+                  </NavItem>
+                  <NavItem eventKey="render-props">Render Props</NavItem>
+                  <NavItem eventKey="hoc">Higher Order Component</NavItem>
+                </Nav>
+                <TabContent activeKey={value}>
+                  <TabPane lazy eventKey="container-component">
+                    <ContainerComponentPattern />
+                  </TabPane>
+                  <TabPane lazy eventKey="compound-component">
+                    <CompoundComponentPattern />
+                  </TabPane>
+                  <TabPane lazy eventKey="hoc">
+                    <HoC />
+                  </TabPane>
+                  <TabPane lazy eventKey="render-props">
+                    <RenderPropsPattern />
+                  </TabPane>
+                </TabContent>
+              </Fragment>
+            )}
+          </Value>
+        </Container>
+      </AppContext.Provider>
     );
   }
 }
