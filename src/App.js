@@ -12,7 +12,7 @@ import personalData from './personal_data.json';
 /** containers */
 import ContainerComponentPattern from './ContainerComponentPattern';
 import CompoundComponentPattern from './CompoundComponentPattern';
-import HoC from './HOC';
+import HoC from './HoC';
 import RenderPropsPattern from './RenderPropsPattern';
 
 export const AppContext = React.createContext({
